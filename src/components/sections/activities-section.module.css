@@ -1,0 +1,99 @@
+.activities {
+  padding-block: clamp(3rem, 5.5vw, 5rem);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: clamp(1.5rem, 3vw, 2.375rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list > :nth-child(3n + 2) {
+  --reveal-order: 1;
+}
+
+.list > :nth-child(3n) {
+  --reveal-order: 2;
+}
+
+.card {
+  height: 100%;
+  padding: clamp(1.1875rem, 2.2vw, 1.625rem);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  background:
+    linear-gradient(135deg, #20295045, transparent 65%),
+    color-mix(in srgb, var(--color-surface) 88%, transparent);
+  transition:
+    border-color var(--duration-hover),
+    box-shadow var(--duration-hover),
+    translate var(--duration-hover) var(--ease-out);
+}
+
+.title {
+  margin-top: 0.5rem;
+  font-size: clamp(1.125rem, 1.75vw, 1.5rem);
+  font-weight: 550;
+  letter-spacing: -0.04em;
+  line-height: 1.25;
+  transition: color var(--duration-hover);
+}
+
+.description {
+  max-width: 43ch;
+  margin-top: 0.5rem;
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    translate: 0 -3px;
+    border-color: var(--color-line-hover);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .card:hover .title {
+    color: var(--color-highlight-hover);
+  }
+}
+
+@media (max-width: 56rem) {
+  .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .list > :nth-child(n) {
+    --reveal-order: 0;
+  }
+
+  .list > :nth-child(even) {
+    --reveal-order: 1;
+  }
+}
+
+@media (max-width: 36rem) {
+  .list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .list > :nth-child(n) {
+    --reveal-order: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .title {
+    transition: none;
+  }
+
+  .card:hover {
+    translate: none;
+  }
+}

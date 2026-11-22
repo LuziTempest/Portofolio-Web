@@ -1,0 +1,21 @@
+# Dependencies and Next.js output
+node_modules/
+/.next/
+/out/
+/next-env.d.ts
+*.tsbuildinfo
+
+# Local environment and hosting configuration
+.env*
+!/.env.example
+/.vercel/
+
+# Original media used to prepare the assets in public/images
+/assets external/
+/logo/
+
+# Local logs and operating-system metadata
+npm-debug.log*
+.DS_Store
+Thumbs.db
+Desktop.ini

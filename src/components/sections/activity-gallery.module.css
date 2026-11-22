@@ -1,0 +1,126 @@
+.gallery {
+  margin-top: clamp(2rem, 5vw, 4rem);
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid var(--color-line);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+  font-weight: 550;
+  letter-spacing: -0.04em;
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.controls button {
+  min-height: 2.75rem;
+  padding: 0.25rem 0.875rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 0.375rem;
+  background: var(--color-surface);
+  color: var(--color-highlight);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 550;
+}
+
+.controls button:enabled {
+  cursor: pointer;
+}
+
+.controls button:enabled:is(:hover, :focus-visible) {
+  border-color: var(--color-highlight-line);
+  background: var(--color-surface-hover);
+}
+
+.controls button:disabled {
+  color: var(--color-subtle);
+  opacity: 0.65;
+}
+
+.track {
+  --gap: 1rem;
+  --landscape-width: calc((100% - 2 * var(--gap)) / 3);
+  --frame-height: clamp(12rem, 20vw, 16.5rem);
+
+  position: relative;
+  display: flex;
+  gap: var(--gap);
+  margin: 0;
+  padding: 0 0 0.625rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--color-line-strong) transparent;
+  scrollbar-width: thin;
+  list-style: none;
+}
+
+.slide {
+  flex: 0 0 var(--landscape-width);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.slide[data-portrait='true'] {
+  flex-basis: calc(var(--frame-height) * 0.85);
+}
+
+.card {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+.imageFrame {
+  position: relative;
+  height: var(--frame-height);
+  background: var(--color-background);
+}
+
+.photo {
+  object-fit: contain;
+}
+
+.caption {
+  padding: 0.75rem 0.875rem;
+  color: var(--color-text);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 57.5rem) {
+  .track {
+    --landscape-width: calc((100% - var(--gap)) / 2);
+  }
+}
+
+@media (max-width: 40rem) {
+  .track {
+    --gap: 0.75rem;
+    --landscape-width: calc(100% - 1.75rem);
+    --frame-height: clamp(12rem, 58vw, 16rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    scroll-behavior: auto;
+  }
+}

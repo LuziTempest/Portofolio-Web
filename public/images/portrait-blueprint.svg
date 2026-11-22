@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="620" viewBox="0 0 760 620" fill="none">
+  <defs>
+    <radialGradient id="glow" gradientTransform="translate(358 308) rotate(89) scale(317 371)" gradientUnits="userSpaceOnUse" r="1">
+      <stop stop-color="#174274"/>
+      <stop offset=".46" stop-color="#102b4c" stop-opacity=".88"/>
+      <stop offset="1" stop-color="#0b1628" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="line" x1="20" y1="350" x2="755" y2="312" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#183855" stop-opacity="0"/>
+      <stop offset=".43" stop-color="#356397" stop-opacity=".78"/>
+      <stop offset="1" stop-color="#27517f" stop-opacity=".42"/>
+    </linearGradient>
+    <linearGradient id="silhouette" x1="354" y1="125" x2="347" y2="584" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1d3658"/>
+      <stop offset=".54" stop-color="#152640"/>
+      <stop offset="1" stop-color="#0c1729"/>
+    </linearGradient>
+    <linearGradient id="outline" x1="384" y1="125" x2="351" y2="584" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#314d72" stop-opacity=".83"/>
+      <stop offset="1" stop-color="#1b3552" stop-opacity=".33"/>
+    </linearGradient>
+    <path id="contour" d="M-74 223C33 270 114 305 194 220C273 135 264 102 365 97C487 92 514 157 617 145C712 134 733 48 799-19"/>
+  </defs>
+
+  <path fill="url(#glow)" d="M0 0h760v620H0z"/>
+  <g stroke="url(#line)" stroke-width="1" opacity=".62">
+    <use href="#contour" transform="translate(0 -2)"/>
+    <use href="#contour" transform="translate(0 9)"/>
+    <use href="#contour" transform="translate(0 20)"/>
+    <use href="#contour" transform="translate(0 31)"/>
+    <use href="#contour" transform="translate(0 42)"/>
+    <use href="#contour" transform="translate(0 53)"/>
+    <use href="#contour" transform="translate(0 64)"/>
+    <use href="#contour" transform="translate(0 75)"/>
+    <use href="#contour" transform="translate(0 86)"/>
+    <use href="#contour" transform="translate(0 97)"/>
+    <use href="#contour" transform="translate(0 108)"/>
+    <use href="#contour" transform="translate(0 119)"/>
+    <use href="#contour" transform="translate(0 130)"/>
+    <use href="#contour" transform="translate(0 141)"/>
+    <use href="#contour" transform="translate(0 152)"/>
+    <use href="#contour" transform="translate(0 163)"/>
+    <use href="#contour" transform="translate(0 174)"/>
+    <use href="#contour" transform="translate(0 185)"/>
+    <use href="#contour" transform="translate(0 196)"/>
+    <use href="#contour" transform="translate(0 207)"/>
+    <use href="#contour" transform="translate(0 218)"/>
+    <use href="#contour" transform="translate(0 229)"/>
+    <use href="#contour" transform="translate(0 240)"/>
+    <use href="#contour" transform="translate(0 251)"/>
+    <use href="#contour" transform="translate(0 262)"/>
+    <use href="#contour" transform="translate(0 273)"/>
+    <use href="#contour" transform="translate(0 284)"/>
+  </g>
+
+  <path d="M117 107V82h26m406 0h26v25M117 564v25h26m406 0h26v-25" stroke="#3c5877" stroke-opacity=".65" stroke-width="1.5"/>
+  <text x="130" y="100" fill="#7898bd" font-family="monospace" font-size="9" letter-spacing="1.05">PORTRAIT PLACEHOLDER</text>
+  <path d="M121 566c7-54 35-86 83-105 28-11 58-17 78-35 16-14 19-37 19-59-13-12-24-28-31-55-19-4-27-24-27-44 0-13 3-20 10-24-2-16-2-31 2-48 9-43 47-72 98-72 47 0 82 26 91 65 4 17 4 35 3 55 7 3 11 11 11 23 0 19-8 39-26 44-8 25-18 43-32 55 0 25 4 47 21 61 20 17 48 22 77 33 47 18 74 52 82 106H121Z" fill="url(#silhouette)" stroke="url(#outline)" stroke-width="2"/>
+  <path d="M301 368c13 13 31 22 50 22 19 0 35-9 49-23m-118 59c11 23 35 54 69 70 29-14 55-39 70-69" stroke="#335277" stroke-opacity=".17"/>
+  <g fill="#6396cd" opacity=".64">
+    <circle cx="562" cy="98" r="1.5"/>
+    <circle cx="154" cy="508" r="1.5"/>
+    <circle cx="493" cy="203" r="1.5"/>
+    <circle cx="165" cy="303" r="1"/>
+  </g>
+</svg>

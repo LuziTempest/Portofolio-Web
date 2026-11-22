@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="310" viewBox="0 0 800 310" fill="none">
+  <defs>
+    <linearGradient id="base" x1="30" y1="270" x2="770" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0d1728"/>
+      <stop offset="1" stop-color="#102847"/>
+    </linearGradient>
+    <pattern id="grid" width="64" height="56" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0v56" stroke="#6896c3" stroke-opacity=".25" stroke-width="1.5"/>
+    </pattern>
+    <filter id="glow" x="-30%" y="-70%" width="160%" height="240%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <path id="snake" d="M126 184h104v-77h133v109h112v-68h124"/>
+  </defs>
+  <path d="M0 0h800v310H0z" fill="url(#base)"/>
+  <path d="M0 0h800v310H0z" fill="url(#grid)" opacity=".62"/>
+  <g stroke="#446d98" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".86">
+    <path d="M434 99h78V51h103M534 246h88v-55h56M245 250h34"/>
+  </g>
+  <use href="#snake" stroke="#74b5ff" stroke-width="23" stroke-linecap="round" stroke-linejoin="round" opacity=".6" filter="url(#glow)"/>
+  <use href="#snake" stroke="#9ac8f9" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <use href="#snake" stroke="#d7ebff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".83"/>
+  <g fill="#92b8dd">
+    <circle cx="132" cy="105" r="5"/>
+    <circle cx="321" cy="238" r="5"/>
+    <circle cx="420" cy="167" r="5"/>
+    <circle cx="645" cy="142" r="6"/>
+    <circle cx="657" cy="72" r="4"/>
+  </g>
+</svg>

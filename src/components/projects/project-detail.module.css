@@ -1,0 +1,213 @@
+.project {
+  padding-block: clamp(2rem, 4vw, 4rem) clamp(3rem, 6vw, 5.5rem);
+}
+
+.back {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  color: var(--color-highlight);
+  font-size: 0.9375rem;
+  font-weight: 550;
+  text-decoration: underline;
+  text-decoration-color: var(--color-line-hover);
+  text-underline-offset: 0.25rem;
+}
+
+.back:is(:hover, :focus-visible) {
+  color: var(--color-highlight-hover);
+  text-decoration-color: currentColor;
+}
+
+.header {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+  padding-block: clamp(1.75rem, 4vw, 3.5rem) clamp(2rem, 4vw, 4rem);
+}
+
+.withArtwork {
+  grid-template-columns: minmax(0, 1.8fr) minmax(14rem, 1fr);
+}
+
+.title {
+  max-width: 18ch;
+  margin-top: 0.75rem;
+  font-size: clamp(2.375rem, 5.8vw, 5rem);
+  font-weight: 520;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.description {
+  max-width: 67ch;
+  margin-top: 1.375rem;
+  color: var(--color-muted);
+  font-size: clamp(1rem, 1.65vw, 1.1875rem);
+  line-height: 1.65;
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.375rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.technologies li {
+  padding: 0.3125rem 0.6875rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-accent);
+  font-size: 0.8125rem;
+}
+
+.artwork {
+  --reveal-order: 1;
+
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-content: center;
+  min-width: 0;
+  padding-block: 0.75rem;
+}
+
+.artwork::before {
+  position: absolute;
+  z-index: -1;
+  inset: 9% -2%;
+  rotate: -13deg;
+  border: 1px solid #a4bdff30;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 53% 50%, #516eb43b, transparent 68%);
+  content: '';
+}
+
+.aircraft {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.aircraft img {
+  display: block;
+  width: 83%;
+  height: auto;
+  filter: drop-shadow(0 0.625rem 0.875rem #070a16bd);
+}
+
+.aircraft img + img {
+  width: 76%;
+  justify-self: end;
+}
+
+.logo {
+  width: min(62%, 12rem);
+  height: auto;
+  justify-self: center;
+  filter: brightness(var(--logo-brightness, 1)) drop-shadow(0 0.625rem 0.875rem #070a16bd);
+}
+
+.logo[data-tone='dark'] {
+  --logo-brightness: 3.4;
+}
+
+.dashboard {
+  max-width: 75rem;
+  margin-inline: auto;
+}
+
+.sectionTitle {
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.75rem, 3.3vw, 2.625rem);
+}
+
+.figure {
+  min-width: 0;
+  margin: 0;
+  padding: clamp(0.5rem, 1.35vw, 0.875rem);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: linear-gradient(150deg, #141d36, var(--color-surface) 70%);
+  transition: border-color var(--duration-hover), box-shadow var(--duration-hover);
+}
+
+.figure:is(:hover, :focus-within) {
+  border-color: var(--color-highlight-line);
+  box-shadow: var(--shadow-highlight);
+}
+
+.figure:is(:hover, :focus-within) .caption {
+  color: var(--color-highlight-hover);
+}
+
+.imageLink {
+  display: block;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  background: #090c14;
+}
+
+.screenshot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.caption {
+  padding: 0.6875rem 0.3125rem 0.125rem;
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+  transition: color var(--duration-hover);
+}
+
+.gallery {
+  margin-top: clamp(2.75rem, 6vw, 5.5rem);
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(0.875rem, 2vw, 1.5rem);
+}
+
+.galleryGrid > :nth-child(even) {
+  --reveal-order: 1;
+}
+
+@media (max-width: 47.999rem) {
+  .withArtwork,
+  .galleryGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .aircraft {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+  }
+
+  .aircraft img,
+  .aircraft img + img {
+    width: 100%;
+  }
+
+  .logo {
+    width: min(46%, 9rem);
+  }
+
+  .galleryGrid > :nth-child(even) {
+    --reveal-order: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .figure,
+  .caption {
+    transition: none;
+  }
+}

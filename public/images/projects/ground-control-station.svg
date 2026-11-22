@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="310" viewBox="0 0 800 310" fill="none">
+  <defs>
+    <linearGradient id="base" x1="0" y1="310" x2="800" y2="45" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0c1727"/>
+      <stop offset="1" stop-color="#10294a"/>
+    </linearGradient>
+    <pattern id="grid" width="64" height="56" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0v56" stroke="#6090c1" stroke-opacity=".27" stroke-width="1.5"/>
+    </pattern>
+    <path id="terrain" d="M-80 312c124-30 139-142 265-152 111-9 170 19 273-24 78-33 146-98 244-94 53 2 91 19 150 26"/>
+  </defs>
+  <path d="M0 0h800v310H0z" fill="url(#base)"/>
+  <path d="M0 0h800v310H0z" fill="url(#grid)" opacity=".62"/>
+  <g stroke="#385d88" stroke-width="2" opacity=".46">
+    <use href="#terrain" transform="translate(0 -44)"/>
+    <use href="#terrain" transform="translate(0 -24)"/>
+    <use href="#terrain"/>
+    <use href="#terrain" transform="translate(0 24)"/>
+    <use href="#terrain" transform="translate(0 48)"/>
+  </g>
+  <path d="m139 238 132-43 162 26 122-122 108 28" stroke="#8bb9e9" stroke-opacity=".23" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m139 238 132-43 162 26 122-122 108 28" stroke="#83acd4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#b0d3fa">
+    <circle cx="139" cy="238" r="4"/>
+    <circle cx="271" cy="195" r="4"/>
+    <circle cx="433" cy="221" r="4"/>
+    <circle cx="555" cy="99" r="4"/>
+    <circle cx="663" cy="127" r="4"/>
+  </g>
+</svg>

@@ -1,0 +1,121 @@
+:where(.portrait) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: var(--portrait-fit, contain);
+  object-position: var(--portrait-position, center bottom);
+  transform-origin: 50% 42%;
+}
+
+.portrait::before,
+.portrait::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background-image: var(--portrait-image);
+  background-size: var(--portrait-fit, contain);
+  background-position: var(--portrait-position, center bottom);
+  background-repeat: no-repeat;
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.portrait::before {
+  filter: sepia(1) saturate(2.4) hue-rotate(145deg);
+}
+
+.portrait::after {
+  filter: sepia(1) saturate(2.1) hue-rotate(232deg);
+  transform-origin: 50% 42%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .portrait[data-portrait-entrance] .image {
+    animation: portrait-settle 760ms var(--ease-out) 120ms backwards;
+  }
+
+  .portrait[data-portrait-entrance]::before {
+    content: '';
+    animation: portrait-reveal-sweep 880ms ease-in-out 120ms;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .image {
+    transition: transform 420ms var(--ease-out), filter 420ms var(--ease-out);
+  }
+
+  .portrait[data-portrait-ready]:hover .image {
+    transform: translateY(-5px) scale(1.025);
+    filter: drop-shadow(0 0 0.8125rem #a5c8ff44);
+  }
+
+  .portrait[data-portrait-ready]:hover::after {
+    content: '';
+    transform: translateY(-5px) scale(1.025);
+    animation: portrait-hover-glint 540ms ease-out;
+  }
+}
+
+@keyframes portrait-settle {
+  from {
+    opacity: 0.64;
+    translate: 0 0.4375rem;
+    scale: 1.026;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+@keyframes portrait-reveal-sweep {
+  0% {
+    clip-path: polygon(0 -11%, 100% -20%, 100% -8%, 0 4%);
+    opacity: 0;
+    translate: -4px 0;
+  }
+
+  46% {
+    clip-path: polygon(0 36%, 100% 24%, 100% 38%, 0 50%);
+    opacity: 0.52;
+    translate: 2px 0;
+  }
+
+  100% {
+    clip-path: polygon(0 96%, 100% 84%, 100% 98%, 0 110%);
+    opacity: 0;
+    translate: 0 0;
+  }
+}
+
+@keyframes portrait-hover-glint {
+  0% {
+    clip-path: inset(19% 0 68%);
+    opacity: 0;
+    translate: -3px 0;
+  }
+
+  28% {
+    opacity: 0.4;
+    translate: -4px 0;
+  }
+
+  58% {
+    clip-path: inset(34% 0 53%);
+    opacity: 0.29;
+    translate: 3px 0;
+  }
+
+  100% {
+    clip-path: inset(48% 0 38%);
+    opacity: 0;
+    translate: 0 0;
+  }
+}
