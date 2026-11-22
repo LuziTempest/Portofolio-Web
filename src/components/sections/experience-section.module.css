@@ -27,7 +27,7 @@
   padding: 0.8125rem 0.875rem 0.8125rem 1.25rem;
   border-bottom: 1px solid var(--color-line);
   border-radius: 0 0.5rem 0.5rem 0;
-  transition: background-color var(--duration-hover);
+  transition: background-color var(--duration-hover), var(--reveal-fade, opacity 0s);
 }
 
 .entry::before {
@@ -84,6 +84,19 @@
   .period {
     transition: color var(--duration-hover);
   }
+
+  .entry[data-reveal-state='visible']::before {
+    animation: timeline-signal 360ms var(--ease-out);
+  }
+}
+
+@keyframes timeline-signal {
+  from {
+    opacity: 0.35;
+    scale: 0.55;
+  }
+
+  56% { scale: 1.4; }
 }
 
 .period {

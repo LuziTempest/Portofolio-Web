@@ -46,15 +46,17 @@ export function ActivityGallery() {
   }
 
   return (
-    <section className={styles.gallery} aria-labelledby="activity-gallery-title" data-reveal>
+    <section className={styles.gallery} aria-labelledby="activity-gallery-title">
       <div className={styles.header}>
-        <h3 id="activity-gallery-title" className={styles.title}>More activities</h3>
+        <h3 id="activity-gallery-title" className={styles.title} data-reveal>More activities</h3>
         <div className={styles.controls}>
           <button type="button" aria-controls="activity-photos" disabled={!edges.previous} onClick={() => move('previous')}>
+            <span aria-hidden="true">←</span>
             Previous
           </button>
           <button type="button" aria-controls="activity-photos" disabled={!edges.next} onClick={() => move('next')}>
             Next
+            <span aria-hidden="true">→</span>
           </button>
         </div>
       </div>

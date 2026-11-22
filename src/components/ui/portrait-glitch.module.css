@@ -1,6 +1,5 @@
 :where(.portrait) {
   position: relative;
-  isolation: isolate;
   overflow: hidden;
 }
 
@@ -14,59 +13,62 @@
 .portrait::after {
   position: absolute;
   z-index: 1;
-  inset: 0;
-  background-image: var(--portrait-image);
-  background-size: var(--portrait-fit, contain);
-  background-position: var(--portrait-position, center bottom);
-  background-repeat: no-repeat;
-  mix-blend-mode: screen;
+  inset: 6% 8% auto;
+  height: 9%;
+  border-radius: 50%;
+  background: linear-gradient(transparent, #a6bbfd32 47%, #c0d9ffa0 49%, #ad92e41e 55%, transparent);
   opacity: 0;
   pointer-events: none;
 }
 
-.portrait::before {
-  filter: sepia(1) saturate(2.4) hue-rotate(145deg);
-}
-
-.portrait::after {
-  filter: sepia(1) saturate(2.1) hue-rotate(232deg);
-  transform-origin: 50% 42%;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .portrait[data-portrait-entrance] .image {
-    animation: portrait-settle 760ms var(--ease-out) 120ms backwards;
+    animation: portrait-settle 620ms var(--ease-out) 70ms backwards;
   }
 
   .portrait[data-portrait-entrance]::before {
     content: '';
-    animation: portrait-reveal-sweep 880ms ease-in-out 120ms;
+    animation: portrait-scan 660ms ease-in-out 70ms;
   }
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .image {
-    transition: transform 420ms var(--ease-out), filter 420ms var(--ease-out);
+    transition: transform 360ms var(--ease-out);
   }
 
   .portrait[data-portrait-ready]:hover .image {
-    transform: translateY(-5px) scale(1.025);
-    filter: drop-shadow(0 0 0.8125rem #a5c8ff44);
+    transform: translateY(-4px) scale(1.02);
+    animation: portrait-hover-glitch 460ms linear;
   }
 
   .portrait[data-portrait-ready]:hover::after {
+    --scan-start: 115%;
+    --scan-end: 680%;
+
+    background: linear-gradient(transparent, #a5c8ff63 34%, transparent 40% 53%, #c3a4ff90 55%, transparent 66%);
     content: '';
-    transform: translateY(-5px) scale(1.025);
-    animation: portrait-hover-glint 540ms ease-out;
+    animation: portrait-scan 460ms ease-out;
   }
+}
+
+@keyframes portrait-hover-glitch {
+  12% { translate: -4px 0; }
+  22% { translate: 3px -1px; }
+  38% { translate: -2px 0; }
+  54% { translate: 1px 0; }
+  72%, to { translate: 0 0; }
 }
 
 @keyframes portrait-settle {
   from {
     opacity: 0.64;
-    translate: 0 0.4375rem;
+    translate: -3px 0.4375rem;
     scale: 1.026;
   }
+
+  16% { translate: 2px 0.25rem; }
+  30% { translate: -1px 0.125rem; }
 
   to {
     opacity: 1;
@@ -75,47 +77,16 @@
   }
 }
 
-@keyframes portrait-reveal-sweep {
-  0% {
-    clip-path: polygon(0 -11%, 100% -20%, 100% -8%, 0 4%);
+@keyframes portrait-scan {
+  from {
+    translate: -2% var(--scan-start, -100%);
     opacity: 0;
-    translate: -4px 0;
   }
 
-  46% {
-    clip-path: polygon(0 36%, 100% 24%, 100% 38%, 0 50%);
-    opacity: 0.52;
-    translate: 2px 0;
-  }
+  37% { opacity: 0.72; }
 
-  100% {
-    clip-path: polygon(0 96%, 100% 84%, 100% 98%, 0 110%);
+  to {
+    translate: 2% var(--scan-end, 900%);
     opacity: 0;
-    translate: 0 0;
-  }
-}
-
-@keyframes portrait-hover-glint {
-  0% {
-    clip-path: inset(19% 0 68%);
-    opacity: 0;
-    translate: -3px 0;
-  }
-
-  28% {
-    opacity: 0.4;
-    translate: -4px 0;
-  }
-
-  58% {
-    clip-path: inset(34% 0 53%);
-    opacity: 0.29;
-    translate: 3px 0;
-  }
-
-  100% {
-    clip-path: inset(48% 0 38%);
-    opacity: 0;
-    translate: 0 0;
   }
 }

@@ -1,30 +1,29 @@
 @media (prefers-reduced-motion: no-preference) {
-  [data-reveal-state='pending'] {
+  :where([data-reveal-state]) {
+    --reveal-duration: 320ms;
+    --reveal-delay: calc(clamp(0, var(--reveal-order, 0), 3) * 28ms);
+    --reveal-fade: opacity var(--reveal-duration) var(--ease-out) var(--reveal-delay);
+    --reveal-motion: transform var(--reveal-duration) var(--ease-out) var(--reveal-delay);
+    transition: var(--reveal-fade);
+  }
+
+  [data-reveal-state='hidden'] {
+    --reveal-duration: 160ms;
+    --reveal-delay: 0ms;
+    --reveal-panel-transform: translateY(0.5rem);
     opacity: 0;
-    translate: 0 1rem;
+    pointer-events: none;
   }
 
-  [data-reveal-state='shown'] {
-    animation: reveal-on-scroll 650ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
-    animation-delay: calc(clamp(0, var(--reveal-order, 0), 5) * 65ms);
+  [data-reveal-state] > [data-reveal-panel] {
+    transform: var(--reveal-panel-transform, none);
   }
 
-  [data-reveal-state]:is(:focus-within, :target, :has(:target)),
-  :target [data-reveal-state] {
-    animation: none;
+  [data-reveal-state]:is(:focus-within, :target, :has(:target)) {
+    --reveal-duration: 0ms;
+    --reveal-delay: 0ms;
+    --reveal-panel-transform: none;
     opacity: 1;
-    translate: none;
-  }
-}
-
-@keyframes reveal-on-scroll {
-  from {
-    opacity: 0;
-    translate: 0 1rem;
-  }
-
-  to {
-    opacity: 1;
-    translate: 0 0;
+    pointer-events: auto;
   }
 }

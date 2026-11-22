@@ -18,7 +18,7 @@ export function ActivitiesSection() {
       <ul className={styles.list} role="list">
         {activities.map(({ area, title, description }) => (
           <li key={title} data-reveal>
-            <article className={styles.card}>
+            <article className={styles.card} data-reveal-panel>
               <p className="eyebrow">{area}</p>
               <h3 className={styles.title}>{title}</h3>
               <p className={styles.description}>{description}</p>

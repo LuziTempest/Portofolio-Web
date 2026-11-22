@@ -40,7 +40,6 @@
   text-decoration: underline;
   text-decoration-color: transparent;
   text-underline-offset: 0.25rem;
-  transition: color var(--duration-hover), text-decoration-color var(--duration-hover);
 }
 
 .footer a:is(:hover, :focus-visible) {
@@ -48,9 +47,18 @@
   text-decoration-color: currentColor;
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: no-preference) {
   .footer a {
-    transition: none;
+    transition: color var(--duration-hover), text-decoration-color var(--duration-hover);
+  }
+
+  .footer a span {
+    display: inline-block;
+    transition: translate 180ms var(--ease-out);
+  }
+
+  .footer a:is(:hover, :focus-visible) span {
+    translate: 0 -0.2rem;
   }
 }
 

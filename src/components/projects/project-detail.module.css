@@ -88,21 +88,77 @@
   content: '';
 }
 
+.artwork[data-artwork='aircraft']::before {
+  inset: 22% 0 15%;
+  rotate: -16deg;
+  border-top-color: #94b3ff69;
+  background: radial-gradient(ellipse at 48% 54%, #627cb559, #344b7940 38%, transparent 70%);
+}
+
+.artwork[data-artwork='aircraft']::after {
+  position: absolute;
+  inset: 28% 14% auto auto;
+  width: 4px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-highlight);
+  box-shadow: 0 0 0.625rem #cba17470;
+  pointer-events: none;
+  content: '';
+}
+
 .aircraft {
-  display: grid;
-  gap: 0.75rem;
+  position: relative;
+  width: min(100%, 30rem);
+  aspect-ratio: 1.6;
+  justify-self: center;
+  perspective: 52rem;
 }
 
-.aircraft img {
-  display: block;
-  width: 83%;
+.formation {
+  position: absolute;
+  inset: 0;
+  transform: rotateX(5deg) rotateY(-10deg) rotateZ(-2deg);
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.formation img {
+  position: absolute;
+  inset: 10% auto auto 7%;
+  width: 56%;
   height: auto;
-  filter: drop-shadow(0 0.625rem 0.875rem #070a16bd);
+  transform: translateZ(-36px) rotateZ(-8deg);
 }
 
-.aircraft img + img {
-  width: 76%;
-  justify-self: end;
+.formation img + img {
+  inset: auto 5% 6% auto;
+  width: 90%;
+  transform: translateZ(32px) rotateZ(-5deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .artwork[data-reveal-state='visible'] .formation {
+    animation: aircraft-arrive 740ms var(--ease-out);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .formation {
+    transition: transform 420ms var(--ease-out);
+  }
+
+  .aircraft:hover .formation {
+    transform: translateY(-5px) var(--aircraft-bank, rotateX(-9deg) rotateY(14deg)) rotateZ(-4deg);
+    transition-duration: 200ms;
+  }
+}
+
+@keyframes aircraft-arrive {
+  from {
+    translate: -0.625rem 0.625rem;
+    rotate: 1 1 0 14deg;
+  }
 }
 
 .logo {
@@ -133,7 +189,7 @@
   border: 1px solid var(--color-line);
   border-radius: var(--radius-card);
   background: linear-gradient(150deg, #141d36, var(--color-surface) 70%);
-  transition: border-color var(--duration-hover), box-shadow var(--duration-hover);
+  transition: border-color var(--duration-hover);
 }
 
 .figure:is(:hover, :focus-within) {
@@ -162,7 +218,7 @@
   padding: 0.6875rem 0.3125rem 0.125rem;
   color: var(--color-muted);
   font-size: 0.9375rem;
-  transition: color var(--duration-hover);
+  transition: color var(--duration-hover), var(--reveal-fade, opacity 0s);
 }
 
 .gallery {
@@ -184,16 +240,6 @@
   .withArtwork,
   .galleryGrid {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .aircraft {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: center;
-  }
-
-  .aircraft img,
-  .aircraft img + img {
-    width: 100%;
   }
 
   .logo {

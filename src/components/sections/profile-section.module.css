@@ -325,14 +325,15 @@
       background-color var(--duration-hover),
       color var(--duration-hover),
       box-shadow var(--duration-hover),
-      transform var(--duration-hover) var(--ease-out);
+      transform var(--duration-hover) var(--ease-out),
+      var(--reveal-fade, opacity 0s);
   }
 
   .title,
   .name,
   .subheading,
   .organizationName {
-    transition: color var(--duration-hover);
+    transition: color var(--duration-hover), var(--reveal-fade, opacity 0s);
   }
 
   .subheading::after {

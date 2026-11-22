@@ -3,71 +3,40 @@
   z-index: -1;
   inset: 0;
   overflow: hidden;
+  contain: paint;
   background:
     radial-gradient(ellipse at 76% 8%, #293f7352, transparent 55%),
     radial-gradient(ellipse at 13% 66%, #3728553a, transparent 49%);
   pointer-events: none;
 }
 
-.sky::before,
-.sky::after {
-  position: absolute;
-  inset: -2.75rem;
-  content: '';
-}
-
 .sky::before {
-  --speck: #aabfdf91;
-  --faint-speck: #8b9dbe65;
-  background-image:
-    radial-gradient(circle at 7% 18%, var(--speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 12% 79%, var(--faint-speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 18% 39%, var(--faint-speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 24% 8%, var(--speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 26% 62%, var(--speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 34% 92%, var(--faint-speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 36% 26%, var(--faint-speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 43% 50%, var(--speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 47% 73%, var(--faint-speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 53% 13%, var(--faint-speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 58% 45%, var(--speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 60% 84%, var(--faint-speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 68% 30%, var(--faint-speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 72% 60%, var(--speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 76% 95%, var(--faint-speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 80% 9%, var(--speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 83% 43%, var(--faint-speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 92% 24%, var(--faint-speck) 0.55px, transparent 1.2px),
-    radial-gradient(circle at 94% 67%, var(--speck) 0.55px, transparent 1.2px);
-  background-size: 43rem 38rem;
-  opacity: 0.76;
-}
+  --speck: #aabfdf72;
+  --faint-speck: #8b9dbe53;
 
-.sky::after {
-  --spark: #d6e5fff0;
-  --halo: #7c9eff42;
+  position: absolute;
+  inset: 0;
   background-image:
-    radial-gradient(circle at 11% 58%, var(--spark) 0.8px, var(--halo) 1.5px, transparent 3.5px),
-    radial-gradient(circle at 24% 21%, var(--spark) 0.65px, var(--halo) 1.3px, transparent 3px),
-    radial-gradient(circle at 36% 86%, var(--spark) 0.8px, var(--halo) 1.5px, transparent 3.5px),
-    radial-gradient(circle at 53% 36%, var(--spark) 0.65px, var(--halo) 1.3px, transparent 3px),
-    radial-gradient(circle at 67% 68%, var(--spark) 0.65px, var(--halo) 1.3px, transparent 3px),
-    radial-gradient(circle at 79% 14%, var(--spark) 0.8px, var(--halo) 1.5px, transparent 3.5px),
-    radial-gradient(circle at 92% 51%, var(--spark) 0.65px, var(--halo) 1.3px, transparent 3px);
-  background-size: 49rem 46rem;
-  opacity: 0.64;
+    radial-gradient(circle at 9% 23%, var(--speck) 0.6px, transparent 1.2px),
+    radial-gradient(circle at 17% 70%, var(--faint-speck) 0.6px, transparent 1.2px),
+    radial-gradient(circle at 29% 42%, #a9c2efb3 0.75px, #a0b8ea31 1.6px, transparent 2.7px),
+    radial-gradient(circle at 42% 91%, var(--speck) 0.6px, transparent 1.2px),
+    radial-gradient(circle at 56% 14%, var(--faint-speck) 0.6px, transparent 1.2px),
+    radial-gradient(circle at 66% 58%, var(--speck) 0.6px, transparent 1.2px),
+    radial-gradient(circle at 77% 30%, var(--faint-speck) 0.6px, transparent 1.2px),
+    radial-gradient(circle at 91% 77%, #a9c2efb3 0.75px, #a0b8ea31 1.6px, transparent 2.7px);
+  background-size: 25rem 23rem;
+  content: '';
 }
 
 .arrival {
   position: absolute;
-  top: -9%;
+  top: 2%;
   left: 69%;
-  width: min(80vw, 62rem);
+  width: min(56vw, 42rem);
   aspect-ratio: 1.5;
   translate: -50% 0;
-  background:
-    radial-gradient(ellipse at 54% 47%, #99b6ff4d, #5f74d634 23%, transparent 61%),
-    radial-gradient(ellipse at 43% 51%, #9c75d539, transparent 57%);
+  background: radial-gradient(ellipse at 50% 49%, #aab7ff52, #735ca438 29%, transparent 65%);
   opacity: 0;
 }
 
@@ -91,16 +60,45 @@
 .cursorLight {
   position: absolute;
   inset: 0 auto auto 0;
-  width: clamp(8rem, 12vw, 11rem);
+  width: clamp(7rem, 10vw, 9rem);
   aspect-ratio: 1;
   translate: -50% -50%;
   background: radial-gradient(circle, #aab9fb26 0%, #7487da17 34%, transparent 71%);
   opacity: 0;
 }
 
+.star {
+  --star-drift: 0.75rem;
+  --star-cycle: 9s;
+
+  position: absolute;
+  width: 3px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #d6e5ff;
+  box-shadow: 0 0 0.375rem #9ab6ff80;
+  opacity: 0.7;
+}
+
+.nearStar {
+  top: 19%;
+  left: 73%;
+}
+
+.farStar {
+  --star-drift: -0.5rem;
+  --star-cycle: 13s;
+
+  top: 65%;
+  left: 17%;
+  width: 2px;
+}
+
 .meteor {
   position: absolute;
-  width: var(--meteor-length);
+  top: 8%;
+  left: 53%;
+  width: clamp(3.75rem, 9vw, 8rem);
   height: 1px;
   opacity: 0;
 }
@@ -108,56 +106,27 @@
 .meteor::before {
   position: absolute;
   inset: 0;
-  rotate: var(--meteor-angle);
+  rotate: 32deg;
   border-radius: 50%;
   background: linear-gradient(90deg, transparent 0%, #9aacff27 43%, #b4d0ff94 85%, #eff5ff 100%);
   box-shadow: 0 0 0.375rem #b4c3ff6b;
   content: '';
 }
 
-.firstMeteor {
-  --meteor-cycle: 19s;
-  --meteor-delay: 1.25s;
-  --meteor-length: clamp(3.75rem, 9vw, 8.5rem);
-  --meteor-angle: 32deg;
-  --meteor-x: 31vw;
-  --meteor-y: 19.4vw;
-
-  top: 8%;
-  left: 53%;
-}
-
-.secondMeteor {
-  --meteor-cycle: 27s;
-  --meteor-delay: 7.5s;
-  --meteor-length: clamp(3.25rem, 7vw, 6.75rem);
-  --meteor-angle: 41deg;
-  --meteor-x: 28vw;
-  --meteor-y: 24.3vw;
-
-  top: 27%;
-  left: 8%;
-}
-
-@keyframes near-drift {
-  to {
-    transform: translate3d(-1.25rem, -2.5rem, 0);
-  }
-}
-
-@keyframes twinkle {
+@keyframes star-drift {
   from {
-    opacity: 0.5;
+    opacity: 0.35;
   }
 
   to {
-    opacity: 0.79;
+    transform: translate3d(var(--star-drift), -0.875rem, 0);
+    opacity: 0.85;
   }
 }
 
 @keyframes galaxy-arrival {
   0% {
-    scale: 0.72;
+    scale: 0.84;
     opacity: 0;
   }
 
@@ -166,7 +135,7 @@
   }
 
   100% {
-    scale: 1.16;
+    scale: 1.09;
     opacity: 0;
   }
 }
@@ -183,24 +152,22 @@
 
   6%,
   100% {
-    transform: translate3d(var(--meteor-x), var(--meteor-y), 0);
+    transform: translate3d(31vw, 19.4vw, 0);
     opacity: 0;
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .sky::after {
-    animation:
-      near-drift 43s linear -9s infinite alternate,
-      twinkle 8s ease-in-out -3s infinite alternate;
+  .star {
+    animation: star-drift var(--star-cycle) ease-in-out -3s infinite alternate;
   }
 
   .arrival {
-    animation: galaxy-arrival 1.55s var(--ease-out);
+    animation: galaxy-arrival 1.2s var(--ease-out);
   }
 
   .meteor {
-    animation: meteor-pass var(--meteor-cycle) linear var(--meteor-delay) infinite;
+    animation: meteor-pass 19s linear 1s infinite;
   }
 }
 
@@ -215,17 +182,13 @@
 }
 
 @media (max-width: 47.999rem) {
-  .sky {
-    opacity: 0.85;
-  }
-
   .arrival {
     top: 2%;
     left: 61%;
-    width: 130vw;
+    width: 88vw;
   }
 
-  .firstMeteor {
+  .meteor {
     top: 13%;
     left: 41%;
   }

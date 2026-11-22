@@ -6,8 +6,9 @@ export function Starfield() {
     <div aria-hidden="true" className={styles.sky}>
       <span className={styles.arrival} />
       <CursorLight />
-      <span className={`${styles.meteor} ${styles.firstMeteor}`} />
-      <span className={`${styles.meteor} ${styles.secondMeteor}`} />
+      <span className={`${styles.star} ${styles.nearStar}`} />
+      <span className={`${styles.star} ${styles.farStar}`} />
+      <span className={styles.meteor} />
     </div>
   );
 }

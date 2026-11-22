@@ -8,7 +8,7 @@ import { ScrollReveal } from '@/components/ui/scroll-reveal';
 export default function HomePage() {
   return (
     <>
-      <main id="main-content" tabIndex={-1}>
+      <main id="main-content" className="page-enter" tabIndex={-1}>
         <HeroSection />
         <ProfileSection />
         <WorkSection />

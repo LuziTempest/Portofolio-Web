@@ -14,6 +14,7 @@ export function CursorLight() {
     const pointer = window.matchMedia(
       '(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)',
     );
+    const viewport = document.documentElement;
     let frameId: number | undefined;
     let x = 0;
     let y = 0;
@@ -42,13 +43,9 @@ export function CursorLight() {
       if (frameId === undefined) frameId = window.requestAnimationFrame(paint);
     }
 
-    function leave(event: PointerEvent) {
-      if (!event.relatedTarget) hide();
-    }
-
     function stopTracking() {
       window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerout', leave);
+      viewport.removeEventListener('pointerleave', hide);
       window.removeEventListener('blur', hide);
       document.removeEventListener('visibilitychange', hide);
       hide();
@@ -60,7 +57,7 @@ export function CursorLight() {
         return;
       }
       window.addEventListener('pointermove', move, { passive: true });
-      window.addEventListener('pointerout', leave, { passive: true });
+      viewport.addEventListener('pointerleave', hide, { passive: true });
       window.addEventListener('blur', hide);
       document.addEventListener('visibilitychange', hide);
     }

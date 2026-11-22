@@ -21,6 +21,7 @@ export function WorkSection() {
               href={`/projects/${project.slug}`}
               prefetch={false}
               aria-labelledby={`${project.slug}-title`}
+              data-reveal-panel
             >
               <div className={styles.imageFrame}>
                 <Image
@@ -55,7 +56,9 @@ export function WorkSection() {
                     <li key={technology}>{technology}</li>
                   ))}
                 </ul>
-                <span className={styles.open}>View project</span>
+                <span className={styles.open}>
+                  View project <span aria-hidden="true">→</span>
+                </span>
               </div>
             </Link>
           </article>

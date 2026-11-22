@@ -44,10 +44,3 @@ export function formatContactMessage({ name, email, message }: ContactMessage) {
     text: `From: ${name} <${email}>\n\n${message}`,
   };
 }
-
-export function contactDraftUrl(recipient: string, message: ContactMessage) {
-  const { subject, text } = formatContactMessage(message);
-  const address = encodeURIComponent(recipient).replace('%40', '@');
-  const body = text.replace(/\r\n|\r|\n/g, '\r\n');
-  return `mailto:${address}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}

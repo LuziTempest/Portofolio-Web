@@ -3,11 +3,12 @@ import Link from 'next/link';
 
 import type { Project, ProjectImage } from '@/content/projects';
 
+import { AircraftScene } from './aircraft-scene';
 import styles from './project-detail.module.css';
 
 function ProjectFigure({ image, sizes }: { image: ProjectImage; sizes: string }) {
   return (
-    <figure className={styles.figure} data-reveal>
+    <figure className={styles.figure}>
       <a
         className={styles.imageLink}
         href={image.src}
@@ -24,16 +25,17 @@ function ProjectFigure({ image, sizes }: { image: ProjectImage; sizes: string })
           sizes={sizes}
         />
       </a>
-      <figcaption className={styles.caption}>{image.caption}</figcaption>
+      <figcaption className={styles.caption} data-reveal>{image.caption}</figcaption>
     </figure>
   );
 }
 
 export function ProjectDetail({ project }: { project: Project }) {
-  const hasArtwork = Boolean(project.logo || project.aircraft?.length);
+  const aircraft = project.aircraft?.length ? project.aircraft : undefined;
+  const hasArtwork = Boolean(project.logo || aircraft);
 
   return (
-    <main id="main-content" tabIndex={-1} className={`container ${styles.project}`}>
+    <main id="main-content" tabIndex={-1} className={`page-enter container ${styles.project}`}>
       <Link className={styles.back} href="/#work">Back to selected work</Link>
 
       <article aria-labelledby="project-title">
@@ -49,20 +51,22 @@ export function ProjectDetail({ project }: { project: Project }) {
             </ul>
           </div>
           {hasArtwork && (
-            <div className={styles.artwork} data-reveal>
-              {project.aircraft && (
-                <div className={styles.aircraft} aria-hidden="true">
-                  {project.aircraft.map(({ src, width, height }) => (
+            <div className={styles.artwork} data-reveal data-artwork={aircraft ? 'aircraft' : undefined}>
+              {aircraft && (
+                <AircraftScene>
+                  {aircraft.map(({ src, width, height }, index) => (
                     <Image
                       key={src}
                       src={src}
                       width={width}
                       height={height}
-                      sizes="(max-width: 767px) 42vw, 24vw"
+                      sizes={index === 0
+                        ? '(max-width: 767px) 50vw, 250px'
+                        : '(max-width: 767px) 82vw, (max-width: 1440px) 29vw, 410px'}
                       alt=""
                     />
                   ))}
-                </div>
+                </AircraftScene>
               )}
               {project.logo && (
                 <Image

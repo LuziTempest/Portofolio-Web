@@ -43,6 +43,12 @@ src/
 
 ## Formulir kontak
 
-Isi `PORTFOLIO_CONTACT_EMAIL` di `.env.local` dengan alamat penerima. Tombol **Open email app** menyiapkan draf dengan isi formulir agar bisa dikirim dari aplikasi email pengunjung.
+Pengunjung mengisi nama, email, dan pesan. Tombol **Send message** mengirim pesan lewat server Next.js. Balasan dari kotak masuk akan diarahkan ke email pengunjung.
 
-Untuk mengaktifkan **Send message** langsung dari web, tambahkan `PORTFOLIO_CONTACT_FROM` dengan alamat pengirim terverifikasi dan `RESEND_API_KEY` pada konfigurasi server. Jalankan ulang server dev atau buat ulang build produksi setelah mengubah pengaturan. [Dokumentasi API Resend](https://resend.com/docs/api-reference/emails/send-email)
+Gunakan `.env.example` sebagai acuan untuk mengisi `.env.local`. [Dokumentasi API Resend](https://resend.com/docs/api-reference/emails/send-email)
+
+- `PORTFOLIO_CONTACT_EMAIL` adalah alamat penerima.
+- `PORTFOLIO_CONTACT_FROM` adalah alamat pengirim dari domain yang sudah diverifikasi di Resend.
+- `RESEND_API_KEY` adalah kunci Resend dengan izin mengirim email.
+
+Jalankan ulang server setelah mengisi pengaturan. Isi variabel yang sama di platform hosting Next.js untuk versi produksi.

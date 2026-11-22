@@ -22,9 +22,8 @@ export function PortraitGlitch({
 }: PortraitGlitchProps) {
   function prepareEffect({ currentTarget: photo }: SyntheticEvent<HTMLImageElement>) {
     const wrapper = photo.parentElement;
-    if (!wrapper || !photo.currentSrc) return;
+    if (!wrapper) return;
 
-    wrapper.style.setProperty('--portrait-image', `url(${JSON.stringify(photo.currentSrc)})`);
     wrapper.setAttribute('data-portrait-ready', '');
     if (priority) wrapper.setAttribute('data-portrait-entrance', '');
   }

@@ -12,7 +12,7 @@ export function HeroSection() {
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
       <div className={`container ${styles.grid}`}>
-        <div className={styles.intro}>
+        <div className={styles.intro} data-reveal>
           <p className={`eyebrow ${styles.eyebrow}`}>Informatics Engineering at ITS</p>
           <h1 className={styles.title} id="hero-title">
             {site.firstName}{' '}

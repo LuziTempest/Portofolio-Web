@@ -1,13 +1,10 @@
 import { ContactForm } from '@/components/contact/contact-form';
 import { ActionLink } from '@/components/ui/action-link';
 import { site } from '@/content/site';
-import { getContactSettings } from '@/lib/contact-settings';
 
 import styles from './site-footer.module.css';
 
 export function SiteFooter() {
-  const { recipient, sender, apiKey } = getContactSettings();
-
   return (
     <footer id="contact" className="container" aria-labelledby="contact-title">
       <div className={styles.contact}>
@@ -18,11 +15,9 @@ export function SiteFooter() {
             <ActionLink href={site.linkedinUrl}>LinkedIn</ActionLink>
           </div>
         </div>
-        {recipient && (
-          <div className={styles.formArea} data-reveal>
-            <ContactForm emailAppRecipient={sender && apiKey ? undefined : recipient} />
-          </div>
-        )}
+        <div className={styles.formArea} data-reveal>
+          <ContactForm />
+        </div>
       </div>
 
       <div className={styles.footer}>

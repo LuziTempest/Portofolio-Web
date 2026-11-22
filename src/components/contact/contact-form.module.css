@@ -6,6 +6,10 @@
   background: var(--color-surface);
 }
 
+.form:focus-within {
+  border-color: var(--color-line-hover);
+}
+
 .fields,
 .row {
   display: grid;
@@ -30,6 +34,31 @@
   color: var(--color-text);
   font-size: 0.875rem;
   font-weight: 550;
+}
+
+.field > span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.field > span::after {
+  width: 0.875rem;
+  height: 1px;
+  transform-origin: left center;
+  background: currentColor;
+  opacity: 0;
+  scale: 0.35 1;
+  content: '';
+}
+
+.field:focus-within > span {
+  color: var(--color-accent);
+}
+
+.field:focus-within > span::after {
+  opacity: 0.8;
+  scale: none;
 }
 
 .field input,
@@ -67,7 +96,6 @@
   cursor: pointer;
 }
 
-.hint,
 .feedback {
   color: var(--color-muted);
   font-size: 0.875rem;
@@ -79,6 +107,45 @@
 
 .feedback[data-error='true'] {
   color: #ffb9b9;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .form {
+    transition: border-color 180ms var(--ease-out);
+  }
+
+  .field > span {
+    transition: color 170ms var(--ease-out);
+  }
+
+  .field > span::after {
+    transition: opacity 160ms var(--ease-out), scale 210ms var(--ease-out);
+  }
+
+  .submit {
+    transition:
+      background-color 160ms,
+      border-color 160ms,
+      color 160ms,
+      translate 170ms var(--ease-out),
+      scale 170ms var(--ease-out);
+  }
+
+  button.submit:active:not(:disabled) {
+    translate: 0 1px;
+    scale: 0.975;
+  }
+
+  .feedback:not(:empty) {
+    animation: feedback-appear 200ms var(--ease-out) backwards;
+  }
+}
+
+@keyframes feedback-appear {
+  from {
+    opacity: 0;
+    translate: 0 0.25rem;
+  }
 }
 
 @media (max-width: 32rem) {

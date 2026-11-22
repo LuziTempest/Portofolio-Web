@@ -29,8 +29,8 @@
     color-mix(in srgb, var(--color-surface) 88%, transparent);
   transition:
     border-color var(--duration-hover),
-    box-shadow var(--duration-hover),
-    translate var(--duration-hover) var(--ease-out);
+    translate var(--duration-hover) var(--ease-out),
+    var(--reveal-motion, transform 0s);
 }
 
 .title {
