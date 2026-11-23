@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { ActionLink } from '@/components/ui/action-link';
@@ -6,6 +5,7 @@ import { PortraitGlitch } from '@/components/ui/portrait-glitch';
 import { featuredProject } from '@/content/projects';
 import { site, specialties } from '@/content/site';
 
+import { HoldMascot } from './hold-mascot';
 import styles from './hero-section.module.css';
 
 export function HeroSection() {
@@ -16,7 +16,7 @@ export function HeroSection() {
           <p className={`eyebrow ${styles.eyebrow}`}>Informatics Engineering at ITS</p>
           <h1 className={styles.title} id="hero-title">
             {site.firstName}{' '}
-            <span className={styles.lastName}>{site.lastName}.</span>
+            <span className={styles.nameMask}><span className={styles.lastName}>{site.lastName}.</span></span>
           </h1>
           <p className={styles.description}>{site.introduction}</p>
           <div className={styles.actions}>
@@ -33,22 +33,13 @@ export function HeroSection() {
             sizes="(max-width: 767px) 100vw, (max-width: 1440px) 46vw, 650px"
             priority
           />
-          <Image
-            {...site.mascot}
-            className={styles.companion}
-            sizes="(max-width: 767px) 14vw, 115px"
-            alt=""
-            aria-hidden="true"
-          />
+          <HoldMascot {...site.mascot} className={styles.companion} />
           <Link className={styles.featured} href={`/projects/${featuredProject.slug}`} prefetch={false}>
             <div>
-              <p className={`eyebrow ${styles.featuredLabel}`}>Featured project</p>
               <p className={styles.featuredTitle}>{featuredProject.shortTitle}</p>
               <p className={styles.featuredTeam}>{site.researchTeam}</p>
             </div>
-            <div className={styles.featuredPreview}>
-              <Image src={featuredProject.cover.src} fill sizes="88px" alt="" />
-            </div>
+            <span aria-hidden="true">→</span>
           </Link>
         </div>
 

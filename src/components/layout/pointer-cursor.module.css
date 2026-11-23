@@ -1,0 +1,49 @@
+.pointer {
+  position: fixed;
+  z-index: 20;
+  inset: 0 auto auto 0;
+  display: none;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+:global(html[data-custom-pointer]) .pointer {
+  display: block;
+}
+
+.pointer svg {
+  position: absolute;
+  top: -3px;
+  left: -12px;
+  rotate: var(--pointer-heading, 0deg);
+  transform-origin: 12px 3px;
+  fill: #090e19;
+  stroke: #d4e5ff;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 1px 2px #000b);
+  transition: rotate 155ms var(--ease-out), fill var(--duration-hover);
+}
+
+.pointer::before {
+  position: absolute;
+  width: 1.875rem;
+  height: 1.875rem;
+  translate: -50% -50%;
+  scale: 0.65;
+  border: 1px solid #b8d4ff65;
+  border-radius: 50%;
+  opacity: 0;
+  transition: scale var(--duration-hover) var(--ease-out), opacity var(--duration-hover);
+  content: '';
+}
+
+.pointer[data-actionable]::before {
+  scale: 1;
+  opacity: 1;
+}
+
+.pointer[data-actionable] svg {
+  fill: #5275aa;
+}

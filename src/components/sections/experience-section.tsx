@@ -1,13 +1,14 @@
 import { experience } from '@/content/experience';
+import { WordReveal } from '@/components/motion/word-reveal';
 
 import styles from './experience-section.module.css';
 
 export function ExperienceSection() {
   return (
     <section id="experience" aria-labelledby="experience-title" className={`container ${styles.experience}`}>
-      <div data-reveal>
+      <div className={styles.lead}>
         <p className="eyebrow">Experience</p>
-        <h2 id="experience-title" className={`section-title ${styles.title}`}>Where I’ve worked.</h2>
+        <h2 id="experience-title" className={`section-title ${styles.title}`}><WordReveal text="Where I’ve worked." /></h2>
         <p className={styles.summary}>UAV software development, laboratory support, mentoring, and competitive programming.</p>
       </div>
 

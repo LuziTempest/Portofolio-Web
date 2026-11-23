@@ -10,8 +10,8 @@ export default function HomePage() {
     <>
       <main id="main-content" className="page-enter" tabIndex={-1}>
         <HeroSection />
-        <ProfileSection />
         <WorkSection />
+        <ProfileSection />
         <ExperienceSection />
         <ActivitiesSection />
       </main>

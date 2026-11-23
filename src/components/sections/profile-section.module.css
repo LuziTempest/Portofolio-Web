@@ -2,7 +2,6 @@
   position: relative;
   padding-block: clamp(3rem, 6.25vw, 6rem);
   border-block: 1px solid var(--color-line);
-  background: radial-gradient(ellipse at 18% 90%, #37295f30, transparent 60%);
 }
 
 .anchor {
@@ -54,10 +53,7 @@
   align-self: center;
   justify-self: end;
   margin: 0;
-  padding: 0.625rem;
-  border: 1px solid var(--color-line-strong);
-  border-radius: var(--radius-card);
-  background: linear-gradient(150deg, #202b48, var(--color-surface) 72%);
+  border-bottom: 1px solid var(--color-line-strong);
 }
 
 .identityCaption {
@@ -245,9 +241,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: clamp(0.75rem, 1.35vw, 1.0625rem);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-card);
-  background: linear-gradient(150deg, #191f38, var(--color-surface) 72%);
+  border-bottom: 1px solid var(--color-line);
 }
 
 .organization:nth-child(2) { --reveal-order: 1; }

@@ -3,26 +3,29 @@
   --font-sans: var(--font-geist), system-ui, sans-serif;
   --font-serif: var(--font-instrument), Georgia, serif;
   --font-mono: ui-monospace, Consolas, monospace;
-  --color-background: #070915;
+  --color-background: #090b10;
   --color-text: #f1f5fc;
   --color-muted: #a6b3c7;
   --color-subtle: #8195af;
   --color-accent: #a5c8ff;
   --color-accent-violet: #b5a4f5;
   --color-on-accent: #0b1631;
-  --color-highlight: #ffcc8a;
-  --color-highlight-hover: #ffe4bb;
-  --color-highlight-line: #bc8c58;
-  --color-on-highlight: #26170e;
-  --color-surface: #0e1426;
-  --color-surface-hover: #161f37;
+  --color-highlight: #bbd5ff;
+  --color-highlight-hover: #e0ebff;
+  --color-highlight-line: #7a9ac9;
+  --color-on-highlight: #141e30;
+  --color-surface: #10151f;
+  --color-surface-hover: #192130;
   --color-line: #232b42;
   --color-line-strong: #384663;
   --color-line-hover: #657ba8;
   --shadow-glow: 0 0.875rem 2.125rem #03071580, 0 0 1.5rem #829bff20;
-  --shadow-highlight: 0 0.5rem 1.5rem #d9925624;
-  --ease-out: cubic-bezier(0.2, 0.75, 0.25, 1);
-  --duration-hover: 240ms;
+  --shadow-highlight: 0 0.5rem 1.5rem #7999d524;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-hover: 190ms;
+  --duration-panel: 360ms;
+  --duration-reveal: 460ms;
+  --duration-stagger: 44ms;
   --content-width: 81rem;
   --page-gutter: clamp(1.5rem, 5vw, 4.5rem);
   --radius-card: 0.75rem;
@@ -36,6 +39,13 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none) {
+  html[data-custom-pointer],
+  html[data-custom-pointer] :is(a, button, summary, [role='button']) {
+    cursor: none !important;
+  }
 }
 
 body {

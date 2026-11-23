@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { WordReveal } from '@/components/motion/word-reveal';
 import type { Project, ProjectImage } from '@/content/projects';
 
 import { AircraftScene } from './aircraft-scene';
@@ -84,15 +85,15 @@ export function ProjectDetail({ project }: { project: Project }) {
         </header>
 
         <section className={styles.dashboard} aria-labelledby="dashboard-title">
-          <h2 className={`section-title ${styles.sectionTitle}`} id="dashboard-title" data-reveal>
-            Dashboard
+          <h2 className={`section-title ${styles.sectionTitle}`} id="dashboard-title">
+            <WordReveal text="Dashboard" />
           </h2>
           <ProjectFigure image={project.cover} sizes="(max-width: 1340px) 90vw, 1200px" />
         </section>
 
         <section className={styles.gallery} aria-labelledby="gallery-title">
-          <h2 className={`section-title ${styles.sectionTitle}`} id="gallery-title" data-reveal>
-            Project gallery
+          <h2 className={`section-title ${styles.sectionTitle}`} id="gallery-title">
+            <WordReveal text="Project gallery" />
           </h2>
           <div className={styles.galleryGrid}>
             {project.gallery.map((image) => (

@@ -2,9 +2,11 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import type { ReactNode } from 'react';
 
+import { PointerCursor } from '@/components/layout/pointer-cursor';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { SiteHeader } from '@/components/layout/site-header';
 import { Starfield } from '@/components/layout/starfield';
+import { ScrollMotion } from '@/components/motion/scroll-motion';
 import { site } from '@/content/site';
 
 import './globals.css';
@@ -39,9 +41,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={`${geist.variable} ${instrumentSerif.variable}`} data-scroll-behavior="smooth">
       <body>
         <Starfield />
+        <PointerCursor />
         <SiteHeader />
         {children}
         <SiteFooter />
+        <ScrollMotion />
       </body>
     </html>
   );

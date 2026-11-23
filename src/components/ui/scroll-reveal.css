@@ -1,7 +1,7 @@
 @media (prefers-reduced-motion: no-preference) {
   :where([data-reveal-state]) {
-    --reveal-duration: 320ms;
-    --reveal-delay: calc(clamp(0, var(--reveal-order, 0), 3) * 28ms);
+    --reveal-duration: var(--duration-reveal);
+    --reveal-delay: calc(clamp(0, var(--reveal-order, 0), 3) * var(--duration-stagger));
     --reveal-fade: opacity var(--reveal-duration) var(--ease-out) var(--reveal-delay);
     --reveal-motion: transform var(--reveal-duration) var(--ease-out) var(--reveal-delay);
     transition: var(--reveal-fade);

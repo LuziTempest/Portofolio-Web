@@ -1,5 +1,7 @@
 'use client';
 
+import { LazyMotion } from 'motion/react';
+import * as m from 'motion/react-m';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
@@ -7,13 +9,22 @@ import { activityPhotos } from '@/content/activities';
 
 import styles from './activity-gallery.module.css';
 
+const loadMotionFeatures = () => import('@/components/motion/motion-features').then((module) => module.default);
+const easing = [0.22, 1, 0.36, 1] as const;
+
 export function ActivityGallery() {
   const trackRef = useRef<HTMLUListElement>(null);
+  const [animateCards, setAnimateCards] = useState(false);
   const [edges, setEdges] = useState({ previous: false, next: activityPhotos.length > 1 });
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
+
+    const preference = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    const syncMotion = () => setAnimateCards(preference.matches);
+    preference.addEventListener('change', syncMotion);
+    syncMotion();
 
     const updateEdges = () => {
       const previous = track.scrollLeft > 1;
@@ -27,6 +38,7 @@ export function ActivityGallery() {
     updateEdges();
 
     return () => {
+      preference.removeEventListener('change', syncMotion);
       resize.disconnect();
       track.removeEventListener('scroll', updateEdges);
     };
@@ -61,26 +73,54 @@ export function ActivityGallery() {
         </div>
       </div>
 
-      <ul id="activity-photos" className={styles.track} ref={trackRef} tabIndex={0} role="list" aria-label="Activity photos">
-        {activityPhotos.map(({ src, caption, alt, portrait }) => (
-          <li className={styles.slide} data-portrait={portrait} key={src}>
-            <figure className={styles.card}>
-              <div className={styles.imageFrame}>
-                <Image
-                  src={src}
-                  alt={alt}
-                  fill
-                  sizes={portrait
-                    ? '(max-width: 640px) 56vw, 224px'
-                    : '(max-width: 640px) 86vw, (max-width: 920px) 44vw, (max-width: 1440px) 30vw, 425px'}
-                  className={styles.photo}
-                />
-              </div>
-              <figcaption className={styles.caption}>{caption}</figcaption>
-            </figure>
-          </li>
-        ))}
-      </ul>
+      <LazyMotion features={loadMotionFeatures} strict>
+        <ul
+          id="activity-photos"
+          className={styles.track}
+          ref={trackRef}
+          tabIndex={0}
+          role="list"
+          aria-label="Activity photos"
+          data-lenis-prevent
+          onKeyDown={(event) => {
+            if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+            event.preventDefault();
+            move(event.key === 'ArrowLeft' ? 'previous' : 'next');
+          }}
+        >
+          {activityPhotos.map(({ src, caption, alt, portrait }) => (
+            <li className={styles.slide} data-portrait={portrait} key={src}>
+              <m.figure
+                className={styles.card}
+                initial={false}
+                whileInView={animateCards ? { opacity: [0.68, 1], y: [12, 0] } : undefined}
+                whileHover={animateCards ? 'hover' : undefined}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: animateCards ? 0.42 : 0, ease: easing }}
+              >
+                <div className={styles.imageFrame}>
+                  <m.div
+                    className={styles.photoLayer}
+                    variants={{ hover: { scale: 1.05, x: 2 } }}
+                    transition={{ duration: animateCards ? 0.32 : 0, ease: easing }}
+                  >
+                    <Image
+                      src={src}
+                      alt={alt}
+                      fill
+                      sizes={portrait
+                        ? '(max-width: 640px) 56vw, 224px'
+                        : '(max-width: 640px) 86vw, (max-width: 920px) 44vw, (max-width: 1440px) 30vw, 425px'}
+                      className={styles.photo}
+                    />
+                  </m.div>
+                </div>
+                <figcaption className={styles.caption}>{caption}</figcaption>
+              </m.figure>
+            </li>
+          ))}
+        </ul>
+      </LazyMotion>
     </section>
   );
 }

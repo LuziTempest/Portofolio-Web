@@ -9,6 +9,14 @@
   max-width: 17rem;
 }
 
+@media (min-width: 48rem) {
+  .lead {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+  }
+}
+
 .summary {
   max-width: 15.5rem;
   margin-top: 1.875rem;
@@ -54,7 +62,7 @@
 
   .entry:hover::before {
     background-color: var(--color-highlight);
-    box-shadow: 0 0 0.5rem #ffcc8a70;
+    box-shadow: 0 0 0.5rem #a5c8ff70;
   }
 }
 

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import { WordReveal } from '@/components/motion/word-reveal';
 import { organizations } from '@/content/organizations';
 import { site } from '@/content/site';
 import { technologies } from '@/content/technologies';
@@ -12,9 +13,9 @@ export function ProfileSection() {
       <span id="about" className={styles.anchor} aria-hidden="true" />
       <div className="container">
         <div className={styles.grid}>
-          <div className={styles.bio} data-reveal>
+          <div className={styles.bio}>
             <p className="eyebrow">Profile</p>
-            <h2 id="profile-title" className={styles.title}>A little about me.</h2>
+            <h2 id="profile-title" className={styles.title}><WordReveal text="A little about me." /></h2>
             <p className={styles.description}>{site.about}</p>
             <dl className={styles.details}>
               <div>

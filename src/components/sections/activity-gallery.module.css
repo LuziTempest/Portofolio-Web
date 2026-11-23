@@ -91,6 +91,12 @@
   background: var(--color-surface);
 }
 
+@media (hover: hover) {
+  .card:hover {
+    border-color: var(--color-line-hover);
+  }
+}
+
 .imageFrame {
   position: relative;
   height: var(--frame-height);
@@ -100,6 +106,11 @@
 
 .photo {
   object-fit: contain;
+}
+
+.photoLayer {
+  position: absolute;
+  inset: 0;
 }
 
 .caption {
@@ -125,16 +136,6 @@
 
   .controls button:last-child:enabled:is(:hover, :focus-visible) span {
     translate: 0.2rem 0;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .photo {
-    transition: scale 280ms var(--ease-out);
-  }
-
-  .card:hover .photo {
-    scale: 1.045;
   }
 }
 

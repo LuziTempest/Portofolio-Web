@@ -5,14 +5,13 @@
   overflow: hidden;
   contain: paint;
   background:
-    radial-gradient(ellipse at 76% 8%, #293f7352, transparent 55%),
-    radial-gradient(ellipse at 13% 66%, #3728553a, transparent 49%);
+    radial-gradient(ellipse at 76% 5%, #20325135, transparent 52%);
   pointer-events: none;
 }
 
 .sky::before {
-  --speck: #aabfdf72;
-  --faint-speck: #8b9dbe53;
+  --speck: #aabfdf4c;
+  --faint-speck: #8b9dbe36;
 
   position: absolute;
   inset: 0;
@@ -55,16 +54,6 @@
   inset: 27% 16%;
   rotate: -27deg;
   border-top-color: #bda8ff46;
-}
-
-.cursorLight {
-  position: absolute;
-  inset: 0 auto auto 0;
-  width: clamp(7rem, 10vw, 9rem);
-  aspect-ratio: 1;
-  translate: -50% -50%;
-  background: radial-gradient(circle, #aab9fb26 0%, #7487da17 34%, transparent 71%);
-  opacity: 0;
 }
 
 .star {
@@ -168,16 +157,6 @@
 
   .meteor {
     animation: meteor-pass 19s linear 1s infinite;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .cursorLight {
-    transition: opacity 220ms var(--ease-out);
-  }
-
-  .cursorLight[data-active] {
-    opacity: 1;
   }
 }
 

@@ -2,9 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { ActionLink } from '@/components/ui/action-link';
-import { navigation, site } from '@/content/site';
+import { site } from '@/content/site';
 
 import styles from './site-header.module.css';
+import { SiteNavigation } from './site-navigation';
 
 export function SiteHeader() {
   return (
@@ -15,11 +16,7 @@ export function SiteHeader() {
           <Image {...site.mascot} className={styles.mascot} sizes="43px" alt="" />
         </Link>
 
-        <nav className={styles.navigation} aria-label="Main navigation">
-          {navigation.map(({ label, href }) => (
-            <Link key={href} href={href}>{label}</Link>
-          ))}
-        </nav>
+        <SiteNavigation />
 
         <ActionLink compact href="#contact" icon="↓">Contact me</ActionLink>
       </div>

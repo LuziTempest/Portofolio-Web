@@ -17,8 +17,8 @@ export const site = {
 };
 
 export const navigation = [
-  { label: 'Profile', href: '/#profile' },
   { label: 'Work', href: '/#work' },
+  { label: 'Profile', href: '/#profile' },
   { label: 'Experience', href: '/#experience' },
   { label: 'Activities', href: '/#activities' },
 ];
